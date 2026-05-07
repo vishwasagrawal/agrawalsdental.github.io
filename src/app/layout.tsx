@@ -9,26 +9,27 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
   title: {
-    default: "Dr Agrawal's Dental Clinic | Expert Dental Care in Pune",
-    template: "%s | Dr Agrawal's Dental Clinic",
+    default: "Dr Agrawal's Dental Clinic & Implant Centre | Hinganghat",
+    template: "%s | Dr Agrawal's Dental Clinic & Implant Centre",
   },
   description:
-    "Dr Agrawal's Dental Clinic — providing expert dental care including teeth cleaning, root canal, dental implants, braces, and cosmetic dentistry in Pune.",
+    "Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat — expert dental care by Dr Rimisha Tibdewal & Dr Gaurav Tibdewal. Implants, root canals, cosmetic dentistry, paediatrics & more.",
   keywords: [
-    'dentist Pune',
-    'dental clinic',
-    'teeth cleaning',
+    'dentist Hinganghat',
+    'dental clinic Hinganghat',
+    'dental implants Hinganghat',
+    'Dr Rimisha Tibdewal',
+    'Dr Gaurav Tibdewal',
     'root canal',
-    'dental implants',
-    'braces',
-    'cosmetic dentistry',
-    'Dr Agrawal',
+    'teeth whitening',
+    'paediatric dentist',
+    'Subhash Chawk dental',
   ],
   authors: [{ name: "Dr Agrawal's Dental Clinic" }],
   creator: "Dr Agrawal's Dental Clinic",
   openGraph: {
-    title: "Dr Agrawal's Dental Clinic",
-    description: 'Expert dental care with a gentle touch. Book your appointment today.',
+    title: "Dr Agrawal's Dental Clinic & Implant Centre",
+    description: 'Expert dental care in Hinganghat. Book your appointment today.',
     type: 'website',
     locale: 'en_IN',
     siteName: "Dr Agrawal's Dental Clinic",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={inter.className}>

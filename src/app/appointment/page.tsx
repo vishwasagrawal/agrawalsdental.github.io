@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { CalendarCheck, Phone, Mail, Clock, CheckCircle, ChevronRight, MapPin } from 'lucide-react'
+import { CalendarCheck, Phone, Mail, Clock, CheckCircle, MapPin } from 'lucide-react'
 import { treatmentTypes } from '@/data/services'
 
 interface FormData {
@@ -22,12 +22,19 @@ const initialForm: FormData = {
   message: '',
 }
 
-const clinicInfo = [
+const clinicInfo: {
+  icon: React.ElementType
+  title: string
+  lines: string[]
+  href: string | null
+  iconBg: string
+  iconColor: string
+}[] = [
   {
     icon: Phone,
     title: 'Call Us',
-    lines: ['+91 98765 43210', '+91 20 4567 8901'],
-    href: 'tel:+919876543210',
+    lines: ['+91 9130084891'],
+    href: 'tel:+919130084891',
     iconBg: 'bg-blue-100',
     iconColor: 'text-blue-600',
   },
@@ -42,8 +49,8 @@ const clinicInfo = [
   {
     icon: MapPin,
     title: 'Find Us',
-    lines: ['123, Dental Square, MG Road', 'Pune, Maharashtra 411001'],
-    href: '#',
+    lines: ['Ram Mandir Ward, Main Road', 'Subhash Chawk, Hinganghat – 442301'],
+    href: 'https://maps.app.goo.gl/h7N5fr6zULoJ76GA9',
     iconBg: 'bg-purple-100',
     iconColor: 'text-purple-600',
   },
@@ -51,11 +58,15 @@ const clinicInfo = [
     icon: Clock,
     title: 'Opening Hours',
     lines: ['Mon–Sat: 9:00 AM – 8:00 PM', 'Sunday: 10:00 AM – 2:00 PM'],
-    href: '#',
+    href: null,
     iconBg: 'bg-orange-100',
     iconColor: 'text-orange-600',
   },
 ]
+
+// Extracted validators reduce cognitive complexity of the validate() function
+const isValidPhone = (phone: string) => /^[6-9]\d{9}$/.test(phone.replaceAll(' ', ''))
+const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
 export default function AppointmentPage() {
   const [form, setForm] = useState<FormData>(initialForm)
@@ -66,9 +77,9 @@ export default function AppointmentPage() {
   const validate = (): boolean => {
     const newErrors: Partial<FormData> = {}
     if (!form.name.trim()) newErrors.name = 'Name is required'
-    if (!form.phone.trim() || !/^[6-9]\d{9}$/.test(form.phone.replace(/\s/g, '')))
+    if (!form.phone.trim() || !isValidPhone(form.phone))
       newErrors.phone = 'Enter a valid 10-digit mobile number'
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+    if (!form.email.trim() || !isValidEmail(form.email))
       newErrors.email = 'Enter a valid email address'
     if (!form.date) newErrors.date = 'Please select a date'
     if (!form.treatment) newErrors.treatment = 'Please select a treatment'
@@ -80,10 +91,31 @@ export default function AppointmentPage() {
     e.preventDefault()
     if (!validate()) return
     setLoading(true)
-    // Simulate API call — replace with real endpoint
-    await new Promise((resolve) => setTimeout(resolve, 1200))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `New Appointment Request – ${form.treatment}`,
+          from_name: form.name,
+          reply_to: form.email,
+          'Patient Name': form.name,
+          'Phone': form.phone,
+          'Email': form.email,
+          'Preferred Date': form.date,
+          'Treatment': form.treatment,
+          'Notes': form.message || 'None',
+        }),
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.message)
+      setSubmitted(true)
+    } catch {
+      setErrors({ message: 'Something went wrong. Please call us directly.' })
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (
@@ -121,26 +153,39 @@ export default function AppointmentPage() {
             {/* Sidebar info */}
             <div className="space-y-5">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Contact Information</h2>
-              {clinicInfo.map(({ icon: Icon, title, lines, href, iconBg, iconColor }) => (
-                <a
-                  key={title}
-                  href={href}
-                  className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 block"
-                >
-                  <div
-                    className={`w-11 h-11 ${iconBg} rounded-xl flex items-center justify-center flex-shrink-0`}
-                    aria-hidden="true"
+              {clinicInfo.map(({ icon: Icon, title, lines, href, iconBg, iconColor }) => {
+                const inner = (
+                  <>
+                    <div
+                      className={`w-11 h-11 ${iconBg} rounded-xl flex items-center justify-center flex-shrink-0`}
+                      aria-hidden="true"
+                    >
+                      <Icon className={`w-5 h-5 ${iconColor}`} />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm mb-1">{title}</p>
+                      {lines.map((line) => (
+                        <p key={line} className="text-gray-500 text-sm">{line}</p>
+                      ))}
+                    </div>
+                  </>
+                )
+                const sharedClass =
+                  'flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100'
+                return href ? (
+                  <a
+                    key={title}
+                    href={href}
+                    className={`${sharedClass} hover:shadow-md transition-shadow`}
                   >
-                    <Icon className={`w-5 h-5 ${iconColor}`} />
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={title} className={sharedClass}>
+                    {inner}
                   </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm mb-1">{title}</p>
-                    {lines.map((line, i) => (
-                      <p key={i} className="text-gray-500 text-sm">{line}</p>
-                    ))}
-                  </div>
-                </a>
-              ))}
+                )
+              })}
             </div>
 
             {/* Booking Form */}
@@ -171,7 +216,7 @@ export default function AppointmentPage() {
                       Book Another Appointment
                     </button>
                     <a
-                      href="tel:+919876543210"
+                      href="tel:+919130084891"
                       className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-50 transition-colors"
                     >
                       <Phone className="w-4 h-4" aria-hidden="true" />
@@ -328,13 +373,16 @@ export default function AppointmentPage() {
                       />
                     </div>
 
-                    {/* Privacy note */}
+                    {errors.message && (
+                      <p className="text-sm text-red-500 text-center" role="alert">{errors.message}</p>
+                    )}
+
                     <p className="text-xs text-gray-400">
-                      By submitting, you agree to our{' '}
-                      <a href="#" className="text-blue-500 underline">
+                      {'By submitting, you agree to our '}
+                      <button type="button" className="text-blue-500 underline hover:text-blue-600">
                         Privacy Policy
-                      </a>
-                      . Your information is kept strictly confidential.
+                      </button>
+                      {'. Your information is kept strictly confidential.'}
                     </p>
 
                     <button
