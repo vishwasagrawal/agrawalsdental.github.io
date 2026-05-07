@@ -5,12 +5,12 @@ import { MessageCircle, X, Phone } from 'lucide-react'
 
 export default function WhatsAppButton() {
   const [isExpanded, setIsExpanded] = useState(false)
-  const phoneNumber = '919876543210'
-  const message = encodeURIComponent("Hello! I'd like to book an appointment at Dr Agrawal's Dental Clinic.")
+  const phoneNumber = '919130084891'
+  const message = encodeURIComponent("Hello! I'd like to book an appointment at Dr Agrawal's Dental Clinic & Implant Centre.")
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3" role="region" aria-label="Quick contact">
+    <section className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3" aria-label="Quick contact">
       {/* Expanded options */}
       {isExpanded && (
         <div className="flex flex-col gap-2 items-end animate-in slide-in-from-bottom-4">
@@ -25,7 +25,7 @@ export default function WhatsAppButton() {
             Chat on WhatsApp
           </a>
           <a
-            href="tel:+919876543210"
+            href="tel:+919130084891"
             className="flex items-center gap-3 bg-white text-gray-800 px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all text-sm font-medium border border-gray-100"
             aria-label="Call us now"
           >
@@ -60,6 +60,6 @@ export default function WhatsAppButton() {
           </svg>
         )}
       </button>
-    </div>
+    </section>
   )
 }

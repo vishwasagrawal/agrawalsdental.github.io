@@ -1,50 +1,55 @@
 import Link from 'next/link'
-import {
-  CheckCircle,
-  Award,
-  GraduationCap,
-  Calendar,
-  ChevronRight,
-  Star,
-  Heart,
-  Users,
-  Stethoscope,
-} from 'lucide-react'
+import { CheckCircle, ChevronRight, Star, Heart, Users } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    "Learn about Dr Agrawal's Dental Clinic — our story, our team, and our commitment to exceptional dental care in Pune.",
+    "Meet Dr Rimisha Tibdewal & Dr Gaurav Tibdewal at Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat. Learn about our team and our commitment to exceptional dental care.",
 }
 
-const qualifications = [
-  { year: '2005', title: 'BDS', institution: 'Bharati Vidyapeeth Dental College, Pune' },
-  { year: '2009', title: 'MDS – Prosthodontics', institution: 'Nair Hospital Dental College, Mumbai' },
-  { year: '2011', title: 'Fellowship in Implantology', institution: 'Indian Prosthodontic Society' },
-  { year: '2015', title: 'Advanced Smile Design Course', institution: 'LVIF, Las Vegas (USA)' },
-  { year: '2019', title: 'Digital Dentistry Certification', institution: 'Sirona Academy, Germany' },
+const doctors = [
+  {
+    initials: 'RT',
+    name: 'Dr. Rimisha Tibdewal',
+    degree: 'BDS',
+    tagline: 'Cosmetic & Paediatric Dentistry',
+    bio: `Dr. Rimisha Tibdewal specialises in cosmetic dentistry, paediatric care, and preventive treatments. She has a natural ability to connect with patients of all ages — particularly children — turning dental visits into positive, confidence-building experiences.`,
+    bio2: `Her artistic eye and attention to detail make her the go-to doctor for smile makeovers, veneers, and teeth whitening. She is passionate about helping every patient love their smile.`,
+    specs: ['Cosmetic Dentistry', 'Paediatrics', 'Veneers & Crowns', 'Teeth Whitening', 'Bonding & Reshaping'],
+    gradient: 'from-teal-400 to-teal-600',
+  },
+  {
+    initials: 'GT',
+    name: 'Dr. Gaurav Tibdewal',
+    degree: 'BDS, MDS',
+    tagline: 'Implantology & Oral Surgery',
+    bio: `Dr. Gaurav Tibdewal is a highly skilled dental surgeon with comprehensive expertise in implantology, oral and maxillofacial surgery, and complex restorative treatments. His precise, methodical approach and calm demeanour put patients at ease — even during advanced procedures.`,
+    bio2: `He is committed to staying current with the latest advances in implant dentistry and surgical techniques, regularly attending professional development programmes to bring the best outcomes to every patient.`,
+    specs: ['Dental Implants', 'Oral Surgery', 'Extractions', 'Bone Grafting', 'Full Mouth Rehabilitation'],
+    gradient: 'from-blue-400 to-blue-600',
+  },
 ]
 
 const certifications = [
-  { title: 'Indian Dental Association', subtitle: 'Member since 2005', icon: '🏅' },
-  { title: 'ISO 9001:2015 Certified', subtitle: 'Sterilisation & Quality', icon: '✅' },
-  { title: 'Indian Prosthodontic Society', subtitle: 'Life Member', icon: '🦷' },
-  { title: 'Academy of Osseointegration', subtitle: 'Member', icon: '🌟' },
-  { title: 'Digital Smile Design', subtitle: 'Certified Practitioner', icon: '💡' },
-  { title: 'NABH Accredited', subtitle: 'National Standards', icon: '🏥' },
+  { title: 'Indian Dental Association', subtitle: 'Registered Members', icon: '🏅' },
+  { title: 'ISO Sterilisation', subtitle: 'Certified Protocols', icon: '✅' },
+  { title: 'Implant Specialists', subtitle: 'Advanced Training', icon: '🦷' },
+  { title: 'Paediatric Dentistry', subtitle: 'Child-Friendly Care', icon: '👶' },
+  { title: 'Cosmetic Dentistry', subtitle: 'Smile Design', icon: '💡' },
+  { title: 'Emergency Care', subtitle: 'Same-Day Available', icon: '🏥' },
 ]
 
 const clinicValues = [
   {
     icon: Heart,
     title: 'Patient-First Care',
-    description: 'Every decision is made with the patient\'s health, comfort, and budget in mind.',
+    description: "Every decision is made with the patient's health, comfort, and budget in mind.",
   },
   {
     icon: Star,
     title: 'Clinical Excellence',
-    description: 'We stay current with the latest techniques and technologies through continuous education.',
+    description: 'We stay current with the latest techniques through continuous professional development.',
   },
   {
     icon: Users,
@@ -69,144 +74,87 @@ export default function AboutPage() {
             Dedicated to Your Dental Health
           </h1>
           <p className="text-blue-100 text-lg leading-relaxed">
-            For over 15 years, Dr Agrawal&apos;s Dental Clinic has been transforming smiles and improving oral health
-            with expert care, modern technology, and genuine compassion.
+            Dr Agrawal&apos;s Dental Clinic &amp; Implant Centre, Hinganghat — two dedicated doctors, one shared
+            mission: bringing world-class dental care to every patient with skill and compassion.
           </p>
         </div>
       </section>
 
-      {/* Doctor Profile */}
-      <section className="py-20 md:py-28 bg-white" aria-labelledby="doctor-profile-heading">
+      {/* Doctor Profiles */}
+      <section className="py-20 md:py-28 bg-white" aria-labelledby="doctors-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Photo placeholder + stats */}
-            <div>
-              <div className="bg-gradient-to-br from-blue-100 to-teal-100 rounded-3xl aspect-[4/5] max-w-sm mx-auto lg:mx-0 flex flex-col items-center justify-center p-8 shadow-xl">
-                <div className="w-40 h-40 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full flex items-center justify-center shadow-2xl mb-6">
-                  <span className="text-5xl font-bold text-white">PA</span>
-                </div>
-                <h2 className="text-2xl font-bold text-gray-900 text-center">Dr. Priya Agrawal</h2>
-                <p className="text-blue-600 text-sm text-center mt-2 mb-6">BDS, MDS (Prosthodontics)</p>
-                <div className="grid grid-cols-3 gap-4 w-full">
-                  {[
-                    { value: '15+', label: 'Years' },
-                    { value: '8K+', label: 'Patients' },
-                    { value: '12', label: 'Awards' },
-                  ].map(({ value, label }) => (
-                    <div key={label} className="bg-white rounded-xl p-3 text-center shadow-sm">
-                      <p className="text-xl font-bold text-blue-600">{value}</p>
-                      <p className="text-xs text-gray-500">{label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Bio */}
-            <div>
-              <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Meet the Doctor</p>
-              <h2 id="doctor-profile-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Dr. Priya Agrawal
-              </h2>
-              <div className="prose prose-gray max-w-none space-y-4">
-                <p className="text-gray-600 leading-relaxed">
-                  Dr. Priya Agrawal is a highly accomplished prosthodontist and cosmetic dentist with over 15 years
-                  of clinical experience. After completing her BDS from Bharati Vidyapeeth Dental College, Pune, she
-                  pursued her MDS specialisation in Prosthodontics from Nair Hospital Dental College, Mumbai.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Her passion for staying at the forefront of dentistry led her to train internationally — including
-                  an Advanced Smile Design course at the Las Vegas Institute for Advanced Dental Studies and Digital
-                  Dentistry certification from Sirona Academy in Germany.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Dr. Agrawal has a particular expertise in full-mouth rehabilitation, dental implants, and cosmetic
-                  smile transformations. She is known for her gentle touch, thorough explanations, and ability to put
-                  even the most anxious patients at ease.
-                </p>
-              </div>
-              <div className="mt-8 grid grid-cols-2 gap-3">
-                {[
-                  'Painless treatment approach',
-                  'Speaks Hindi, Marathi & English',
-                  'Regular international training',
-                  'Child-friendly technique',
-                ].map((point) => (
-                  <div key={point} className="flex items-start gap-2 text-sm text-gray-700">
-                    <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                    {point}
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/appointment"
-                className="mt-8 inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
-              >
-                Book a Consultation
-                <ChevronRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Qualifications Timeline */}
-      <section className="py-20 bg-gray-50" aria-labelledby="qualifications-heading">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Education & Training</p>
-            <h2 id="qualifications-heading" className="text-3xl font-bold text-gray-900">
-              Qualifications
+          <div className="text-center mb-14">
+            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Our Team</p>
+            <h2 id="doctors-heading" className="text-3xl md:text-4xl font-bold text-gray-900">
+              Meet Our Doctors
             </h2>
           </div>
-          <div className="relative">
-            {/* Timeline line */}
-            <div
-              className="absolute left-5 top-0 bottom-0 w-0.5 bg-blue-200"
-              aria-hidden="true"
-            />
-            <div className="space-y-8">
-              {qualifications.map((q, i) => (
-                <div key={i} className="relative flex gap-6">
-                  <div
-                    className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md z-10"
-                    aria-hidden="true"
-                  >
-                    <GraduationCap className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="bg-white rounded-xl p-5 flex-1 shadow-sm border border-gray-100">
-                    <div className="flex items-start justify-between gap-4 mb-1">
-                      <h3 className="font-bold text-gray-900">{q.title}</h3>
-                      <span className="text-blue-600 text-sm font-semibold whitespace-nowrap">{q.year}</span>
+
+          <div className="space-y-16">
+            {doctors.map(({ initials, name, degree, tagline, bio, bio2, specs, gradient }, idx) => (
+              <div
+                key={name}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${idx % 2 === 0 ? '' : 'lg:grid-flow-dense'}`}
+              >
+                {/* Avatar card */}
+                <div className={idx % 2 === 0 ? '' : 'lg:col-start-2'}>
+                  <div className={`bg-gradient-to-br ${gradient} rounded-3xl p-10 flex flex-col items-center text-center shadow-xl max-w-sm mx-auto`}>
+                    <div className="w-28 h-28 bg-white/20 rounded-full flex items-center justify-center shadow-2xl mb-5">
+                      <span className="text-white font-bold text-4xl">{initials}</span>
                     </div>
-                    <p className="text-gray-500 text-sm">{q.institution}</p>
+                    <h3 className="text-white font-bold text-xl mb-1">{name}</h3>
+                    <p className="text-white/80 text-sm mb-1">{degree}</p>
+                    <p className="text-white/70 text-xs mb-5">{tagline}</p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {specs.map((s) => (
+                        <span key={s} className="bg-white/20 text-white text-xs px-3 py-1 rounded-full">{s}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
+
+                {/* Bio */}
+                <div className={idx % 2 === 0 ? '' : 'lg:col-start-1 lg:row-start-1'}>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-1">{name}</h3>
+                  <p className="text-blue-600 font-semibold text-sm mb-5">{degree} · {tagline}</p>
+                  <p className="text-gray-600 leading-relaxed mb-4">{bio}</p>
+                  <p className="text-gray-600 leading-relaxed mb-6">{bio2}</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {specs.map((spec) => (
+                      <div key={spec} className="flex items-center gap-2 text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" aria-hidden="true" />
+                        {spec}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/appointment"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Book a Consultation
+              <ChevronRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Our Values */}
-      <section className="py-20 md:py-28 bg-white" aria-labelledby="values-heading">
+      <section className="py-20 bg-gray-50" aria-labelledby="values-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Our Philosophy</p>
-            <h2 id="values-heading" className="text-3xl font-bold text-gray-900">
-              What We Stand For
-            </h2>
+            <h2 id="values-heading" className="text-3xl font-bold text-gray-900">What We Stand For</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {clinicValues.map(({ icon: Icon, title, description }) => (
-              <div
-                key={title}
-                className="text-center p-8 bg-gray-50 rounded-2xl hover:shadow-md transition-shadow border border-gray-100"
-              >
-                <div
-                  className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-5"
-                  aria-hidden="true"
-                >
+              <div key={title} className="text-center p-8 bg-white rounded-2xl hover:shadow-md transition-shadow border border-gray-100">
+                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-5" aria-hidden="true">
                   <Icon className="w-7 h-7 text-blue-600" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-3">{title}</h3>
@@ -218,20 +166,17 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 bg-blue-50" aria-labelledby="certifications-heading">
+      <section className="py-20 bg-blue-50" aria-labelledby="certs-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Credentials</p>
-            <h2 id="certifications-heading" className="text-3xl font-bold text-gray-900">
-              Certifications & Memberships
+            <h2 id="certs-heading" className="text-3xl font-bold text-gray-900">
+              Certifications &amp; Memberships
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {certifications.map(({ title, subtitle, icon }) => (
-              <div
-                key={title}
-                className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow border border-blue-100"
-              >
+              <div key={title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow border border-blue-100">
                 <div className="text-3xl mb-3" aria-hidden="true">{icon}</div>
                 <h3 className="font-semibold text-gray-900 text-xs mb-1">{title}</h3>
                 <p className="text-gray-400 text-xs">{subtitle}</p>
@@ -246,25 +191,23 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Our Story</p>
-            <h2 id="story-heading" className="text-3xl font-bold text-gray-900">
-              How We Began
-            </h2>
+            <h2 id="story-heading" className="text-3xl font-bold text-gray-900">How We Began</h2>
           </div>
           <div className="bg-gradient-to-br from-blue-50 to-teal-50 rounded-3xl p-8 md:p-12 border border-blue-100">
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              Dr Agrawal&apos;s Dental Clinic was founded in 2009 with a simple vision: to provide world-class dental
-              care that is accessible, comfortable, and genuinely caring — without the clinical coldness that often
-              characterises dental visits.
+              Dr Agrawal&apos;s Dental Clinic &amp; Implant Centre was established with a single, clear vision: to bring
+              comprehensive, high-quality dental care to the people of Hinganghat and the surrounding region —
+              care that is accessible, comfortable, and genuinely compassionate.
             </p>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Starting as a small single-chair practice in Koregaon Park, we have grown into a multi-specialty
-              dental centre with the latest digital technologies. Through the years, our commitment has never
-              wavered — every patient deserves the best care, delivered with respect and compassion.
+              Located at Ram Mandir Ward, Main Road, Subhash Chawk, Hinganghat, our clinic is equipped with
+              modern dental technology including digital X-rays, an implant surgery suite, and ISO-certified
+              sterilisation protocols to ensure the highest standards of safety and precision.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Today, we serve over 8,000 patients from across Pune and beyond, with a team of specialists offering
-              comprehensive dental care under one roof. We are proud to be a clinic where families return generation
-              after generation — the highest compliment any doctor can receive.
+              Today, Dr Rimisha Tibdewal and Dr Gaurav Tibdewal together offer the full spectrum of dental
+              services — from routine check-ups and children&apos;s dentistry to complex implant surgeries and smile
+              transformations. Our patients are our community, and we are proud to serve them.
             </p>
           </div>
         </div>

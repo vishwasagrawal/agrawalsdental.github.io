@@ -1,10 +1,19 @@
 import Link from 'next/link'
 import {
-  Sparkles,
-  Activity,
-  Shield,
-  Smile,
   Star,
+  Layers,
+  Stethoscope,
+  Sparkles,
+  Shield,
+  LayoutGrid,
+  Scissors,
+  Droplets,
+  Activity,
+  Heart,
+  Wrench,
+  Zap,
+  Pencil,
+  Gem,
   Scan,
   Clock,
   ChevronRight,
@@ -22,11 +31,20 @@ export const metadata: Metadata = {
 }
 
 const iconMap: Record<string, React.ElementType> = {
-  Sparkles,
-  Activity,
-  Shield,
-  Smile,
   Star,
+  Layers,
+  Stethoscope,
+  Sparkles,
+  Shield,
+  LayoutGrid,
+  Scissors,
+  Droplets,
+  Activity,
+  Heart,
+  Wrench,
+  Zap,
+  Pencil,
+  Gem,
   Scan,
 }
 
@@ -187,7 +205,7 @@ export default function ServicesPage() {
               Book Free Consult
             </Link>
             <a
-              href="tel:+919876543210"
+              href="tel:+919130084891"
               className="inline-flex items-center justify-center gap-2 border-2 border-white/60 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all"
             >
               <Phone className="w-5 h-5" aria-hidden="true" />

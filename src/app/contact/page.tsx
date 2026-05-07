@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react'
 
 interface ContactForm {
   name: string
@@ -23,9 +23,9 @@ const contactCards = [
   {
     icon: Phone,
     title: 'Call Us',
-    primary: '+91 98765 43210',
-    secondary: '+91 20 4567 8901',
-    href: 'tel:+919876543210',
+    primary: '+91 9130084891',
+    secondary: 'Available 7 days a week',
+    href: 'tel:+919130084891',
     bg: 'bg-blue-600',
     description: 'Mon–Sat 9AM–8PM · Sun 10AM–2PM',
   },
@@ -41,9 +41,9 @@ const contactCards = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    primary: '123, Dental Square',
-    secondary: 'MG Road, Pune – 411001',
-    href: 'https://maps.google.com/?q=MG+Road+Pune',
+    primary: 'Ram Mandir Ward, Main Road',
+    secondary: 'Subhash Chawk, Hinganghat – 442301',
+    href: 'https://maps.app.goo.gl/h7N5fr6zULoJ76GA9',
     bg: 'bg-purple-600',
     description: 'Parking available',
   },
@@ -124,14 +124,14 @@ export default function ContactPage() {
             {/* Google Maps embed */}
             <div className="rounded-3xl overflow-hidden shadow-sm border border-gray-100 h-full min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.196022578695!2d73.8434588!3d18.5196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c07f4e8c6f0f%3A0x4a5e0c6d3a6b5c6e!2sMG%20Road%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=20.5513006,78.834307&output=embed&z=17"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '400px' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Dr Agrawal's Dental Clinic location on Google Maps"
+                title="Dr Agrawal's Dental Clinic & Implant Centre location on Google Maps"
               />
             </div>
 
@@ -283,7 +283,7 @@ export default function ContactPage() {
               <div
                 key={day}
                 className={`flex items-center justify-between px-6 py-4 ${
-                  i !== 6 ? 'border-b border-gray-100' : ''
+                  i === 6 ? '' : 'border-b border-gray-100'
                 }`}
               >
                 <span className="font-medium text-gray-900 text-sm">{day}</span>
@@ -302,8 +302,8 @@ export default function ContactPage() {
           </div>
           <p className="text-center text-gray-400 text-sm mt-4">
             * Emergency appointments available outside hours. Call{' '}
-            <a href="tel:+919876543210" className="text-blue-500">
-              +91 98765 43210
+            <a href="tel:+919130084891" className="text-blue-500">
+              +91 9130084891
             </a>
           </p>
         </div>

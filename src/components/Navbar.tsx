@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -40,10 +41,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group" aria-label="Dr Agrawal's Dental Clinic - Home">
-            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-md group-hover:bg-blue-700 transition-colors">
-              <svg viewBox="0 0 24 24" fill="white" className="w-6 h-6" aria-hidden="true">
-                <path d="M12 2C8.5 2 6 4.5 6 7c0 1.5.5 2.8 1.3 3.8C8.1 12 8 13.1 8 14c0 3 1 6 2 7 .5.5 1 .5 1.5 0 .3-.5.5-1.5.5-2.5s.3-1.5 0-2c-.3-.5 0-1 .5-1h.5c.5 0 .8.5.5 1-.3.5 0 1 0 2s.2 2 .5 2.5c.5.5 1 .5 1.5 0 1-1 2-4 2-7 0-.9-.1-2 .7-3.2C18.5 9.8 19 8.5 19 7c0-2.5-2.5-5-7-5z" />
-              </svg>
+            <div className="w-10 h-10 flex items-center justify-center">
+              <Image src="/dental-logo.png" alt="Dr Agrawal's Dental Clinic logo" width={40} height={40} priority />
             </div>
             <div className="leading-tight">
               <p className="font-bold text-gray-900 text-sm">Dr Agrawal&apos;s</p>
@@ -71,12 +70,12 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:+919876543210"
+              href="tel:+919130084891"
               className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium"
               aria-label="Call us"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
-              <span>+91 98765 43210</span>
+              <span>+91 9130084891</span>
             </a>
             <Link
               href="/appointment"
@@ -89,7 +88,7 @@ export default function Navbar() {
           {/* Mobile: Phone + Hamburger */}
           <div className="flex md:hidden items-center gap-3">
             <a
-              href="tel:+919876543210"
+              href="tel:+919130084891"
               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
               aria-label="Call us"
             >
