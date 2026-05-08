@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone } from 'lucide-react'
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -42,7 +43,8 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group" aria-label="Dr Agrawal's Dental Clinic - Home">
             <div className="w-10 h-10 flex items-center justify-center">
-              <Image src="/dental-logo.png" alt="Dr Agrawal's Dental Clinic logo" width={40} height={40} priority />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${basePath}/dental-logo.png`} alt="Dr Agrawal's Dental Clinic logo" width={40} height={40} />
             </div>
             <div className="leading-tight">
               <p className="font-bold text-gray-900 text-sm">Dr Agrawal&apos;s</p>
