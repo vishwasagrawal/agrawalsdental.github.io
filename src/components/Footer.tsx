@@ -83,7 +83,7 @@ export default function Footer() {
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               Providing comprehensive dental and implant care to the people of Hinganghat and surrounding areas.
-              Led by Dr Rimisha Tibdewal &amp; Dr Gaurav Tibdewal.
+              Led by Dr Rimisha G. Tibdewal &amp; Dr Gaurav S. Tibdewal.
             </p>
             {/* Social Links */}
             <div className="flex space-x-3">

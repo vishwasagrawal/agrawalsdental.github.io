@@ -33,7 +33,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: "Dr Agrawal's Dental Clinic & Implant Centre | Hinganghat",
   description:
-    "Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat — expert dental care by Dr Rimisha Tibdewal & Dr Gaurav Tibdewal. Implants, root canals, cosmetic dentistry & more.",
+    "Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat — expert dental care by Dr Rimisha G. Tibdewal & Dr Gaurav S. Tibdewal. Implants, root canals, cosmetic dentistry & more.",
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -73,9 +73,6 @@ export default function HomePage() {
 
             {/* Left */}
             <div>
-              <p className="text-blue-400 text-sm font-semibold uppercase tracking-widest mb-4">
-                Hinganghat · Maharashtra
-              </p>
               <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Dr Agrawal&apos;s<br />
                 <span className="text-blue-400">Dental Clinic</span><br />
@@ -118,16 +115,16 @@ export default function HomePage() {
                 {[
                   {
                     initials: 'RT',
-                    name: 'Dr. Rimisha Tibdewal',
+                    name: 'Dr. Rimisha G. Tibdewal',
                     degree: 'BDS',
                     specialty: 'Cosmetic & Paediatric Dentistry',
                     color: 'bg-teal-600',
                   },
                   {
                     initials: 'GT',
-                    name: 'Dr. Gaurav Tibdewal',
+                    name: 'Dr. Gaurav S. Tibdewal',
                     degree: 'BDS, MDS',
-                    specialty: 'Implantology & Oral Surgery',
+                    specialty: 'Implantology, Root Canal & Oral Surgery',
                     color: 'bg-blue-600',
                   },
                 ].map(({ initials, name, degree, specialty, color }) => (
@@ -279,7 +276,7 @@ export default function HomePage() {
             {[
               {
                 initials: 'RT',
-                name: 'Dr. Rimisha Tibdewal',
+                name: 'Dr. Rimisha G. Tibdewal',
                 degree: 'BDS',
                 specialty: 'Cosmetic & Paediatric Dentistry',
                 bio: 'Specialising in smile design, cosmetic dentistry, and child-friendly care. She brings an artistic eye and a calm, reassuring approach that patients of all ages appreciate.',
@@ -289,11 +286,11 @@ export default function HomePage() {
               },
               {
                 initials: 'GT',
-                name: 'Dr. Gaurav Tibdewal',
+                name: 'Dr. Gaurav S. Tibdewal',
                 degree: 'BDS, MDS',
-                specialty: 'Implantology & Oral Surgery',
-                bio: 'An experienced dental surgeon with precision expertise in implantology, oral surgery, and full-mouth rehabilitation. Known for meticulous technique and minimal post-operative discomfort.',
-                specs: ['Dental Implants', 'Oral Surgery', 'Bone Grafting', 'Extractions'],
+                specialty: 'Implantology, Root Canal & Oral Surgery',
+                bio: 'An experienced dental surgeon with precision expertise in implantology, root canal treatments, oral surgery, and full-mouth rehabilitation. Known for meticulous technique and minimal post-operative discomfort.',
+                specs: ['Dental Implants', 'Root Canal Treatment', 'Oral Surgery', 'Bone Grafting', 'Extractions'],
                 accent: 'border-blue-500',
                 badge: 'bg-blue-50 text-blue-700',
               },
