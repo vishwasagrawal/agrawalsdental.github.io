@@ -9,61 +9,75 @@ type FilterType = 'all' | 'before-after' | 'clinic'
 interface GalleryItem {
   id: number
   title: string
-  category: FilterType | 'before-after' | 'clinic'
+  category: FilterType
   description: string
-  gradient: string
   badge?: string
+  image?: string
+  beforeLabel?: string
+  afterLabel?: string
+  gradient?: string
 }
 
 const galleryItems: GalleryItem[] = [
-  // Before/After items
   {
     id: 1,
     title: 'Smile Makeover',
     category: 'before-after',
-    description: 'Complete smile transformation with veneers & whitening',
-    gradient: 'from-blue-400 to-teal-500',
+    description: 'Complete smile transformation with porcelain veneers',
     badge: 'Veneers',
+    image: 'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=700&h=400&fit=crop&auto=format',
+    beforeLabel: 'Chipped & Stained',
+    afterLabel: 'Porcelain Veneers',
   },
   {
     id: 2,
     title: 'Teeth Whitening',
     category: 'before-after',
-    description: '6 shades brighter in a single in-office session',
-    gradient: 'from-purple-400 to-pink-500',
+    description: '6 shades brighter in a single in-clinic session',
     badge: 'Whitening',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=700&h=400&fit=crop&auto=format',
+    beforeLabel: 'Yellow & Stained',
+    afterLabel: '6 Shades Brighter',
   },
   {
     id: 3,
-    title: 'Aligner Treatment',
+    title: 'Clear Aligner Treatment',
     category: 'before-after',
-    description: 'Perfectly aligned smile after 14 months of clear aligners',
-    gradient: 'from-teal-400 to-blue-500',
+    description: 'Perfectly aligned smile after clear aligner therapy',
     badge: 'Aligners',
+    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=700&h=400&fit=crop&auto=format',
+    beforeLabel: 'Crowded & Misaligned',
+    afterLabel: 'Aligned & Even',
   },
   {
     id: 4,
-    title: 'Implant Restoration',
+    title: 'Dental Implant',
     category: 'before-after',
     description: 'Single tooth implant — natural-looking and permanent',
-    gradient: 'from-orange-400 to-red-400',
     badge: 'Implants',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&h=400&fit=crop&auto=format',
+    beforeLabel: 'Missing Tooth & Gap',
+    afterLabel: 'Natural Implant Crown',
   },
   {
     id: 5,
-    title: 'Full Mouth Rehab',
+    title: 'Full Mouth Rehabilitation',
     category: 'before-after',
-    description: 'Complete oral rehabilitation over 6 months',
-    gradient: 'from-green-400 to-teal-600',
+    description: 'Complete oral rehabilitation with crowns & implants',
     badge: 'Rehab',
+    image: 'https://images.unsplash.com/photo-1445543949571-ffc3e0e2f55e?w=700&h=400&fit=crop&auto=format',
+    beforeLabel: 'Worn & Damaged',
+    afterLabel: 'Full Restoration',
   },
   {
     id: 6,
     title: 'Crown Placement',
     category: 'before-after',
-    description: 'Ceramic crown perfectly matching natural teeth',
-    gradient: 'from-blue-500 to-indigo-600',
+    description: 'Ceramic crown matching natural teeth perfectly',
     badge: 'Crown',
+    image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=700&h=400&fit=crop&auto=format',
+    beforeLabel: 'Fractured Tooth',
+    afterLabel: 'Ceramic Crown',
   },
   // Clinic items
   {
@@ -77,7 +91,7 @@ const galleryItems: GalleryItem[] = [
     id: 8,
     title: 'Treatment Room',
     category: 'clinic',
-    description: 'Fully equipped with digital X-ray & 3D scanner',
+    description: 'Fully equipped with digital X-ray & modern dental unit',
     gradient: 'from-blue-400 to-cyan-500',
   },
   {
@@ -116,6 +130,16 @@ const filters: { label: string; value: FilterType | 'all' }[] = [
   { label: 'Our Clinic', value: 'clinic' },
 ]
 
+// Per-treatment CSS filters to simulate the "before" condition
+const beforeFilters: Record<string, string> = {
+  Veneers:   'grayscale(30%) sepia(40%) contrast(0.9) brightness(0.78)',
+  Whitening: 'sepia(70%) contrast(0.85) brightness(0.82) saturate(1.2)',
+  Aligners:  'grayscale(50%) contrast(1.05) brightness(0.75)',
+  Implants:  'grayscale(60%) contrast(1.1) brightness(0.72)',
+  Rehab:     'sepia(50%) grayscale(40%) brightness(0.7) contrast(1.1)',
+  Crown:     'sepia(30%) grayscale(30%) contrast(1.05) brightness(0.76)',
+}
+
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState<FilterType | 'all'>('all')
 
@@ -132,7 +156,7 @@ export default function GalleryPage() {
             Gallery
           </h1>
           <p className="text-blue-100 text-lg leading-relaxed">
-            Real results from our patients and a peek inside our modern, welcoming clinic.
+            Real results from our treatments and a peek inside our modern clinic.
           </p>
         </div>
       </section>
@@ -140,6 +164,7 @@ export default function GalleryPage() {
       {/* Gallery Section */}
       <section className="py-20 bg-white" aria-labelledby="gallery-grid-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           {/* Filter Tabs */}
           <div className="flex justify-center mb-12" role="tablist" aria-label="Gallery filter">
             <div className="bg-gray-100 rounded-full p-1 flex gap-1">
@@ -161,43 +186,65 @@ export default function GalleryPage() {
             </div>
           </div>
 
-          {/* Grid */}
-          <h2 id="gallery-grid-heading" className="sr-only">
-            Gallery images
-          </h2>
+          <h2 id="gallery-grid-heading" className="sr-only">Gallery images</h2>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((item) => (
               <div
                 key={item.id}
                 className="group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100"
               >
-                {item.category === 'before-after' ? (
-                  /* Before/After split card */
-                  <div className="relative h-56 flex">
-                    <div className={`flex-1 bg-gradient-to-br ${item.gradient} opacity-60 flex items-end p-3`}>
-                      <span className="text-white text-xs font-bold bg-black/30 rounded px-2 py-0.5">Before</span>
+                {item.category === 'before-after' && item.image ? (
+                  /* Real before/after split */
+                  <div className="relative h-56 flex overflow-hidden">
+                    {/* Before */}
+                    <div className="flex-1 relative overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.image}
+                        alt={`Before ${item.title}`}
+                        className="w-full h-full object-cover"
+                        style={{ filter: beforeFilters[item.badge ?? ''] ?? 'grayscale(40%) brightness(0.8)' }}
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 px-3 py-2 bg-gradient-to-t from-black/70 to-transparent">
+                        <span className="text-white text-xs font-bold block">Before</span>
+                        {item.beforeLabel && (
+                          <span className="text-white/75 text-xs">{item.beforeLabel}</span>
+                        )}
+                      </div>
                     </div>
-                    <div className="w-0.5 bg-white z-10" aria-hidden="true" />
-                    <div className={`flex-1 bg-gradient-to-br ${item.gradient} flex items-end p-3`}>
-                      <span className="text-white text-xs font-bold bg-black/30 rounded px-2 py-0.5">After</span>
-                    </div>
-                    {/* Center label */}
-                    <div
-                      className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                      aria-hidden="true"
-                    >
-                      <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+
+                    {/* Divider */}
+                    <div className="w-0.5 bg-white z-10 relative flex items-center justify-center" aria-hidden="true">
+                      <div className="w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center absolute z-20">
                         <span className="text-gray-400 text-xs font-bold">↔</span>
                       </div>
                     </div>
+
+                    {/* After */}
+                    <div className="flex-1 relative overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.image}
+                        alt={`After ${item.title}`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 px-3 py-2 bg-gradient-to-t from-black/70 to-transparent">
+                        <span className="text-white text-xs font-bold block">After</span>
+                        {item.afterLabel && (
+                          <span className="text-white/75 text-xs">{item.afterLabel}</span>
+                        )}
+                      </div>
+                    </div>
+
                     {item.badge && (
-                      <span className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                      <span className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full z-10">
                         {item.badge}
                       </span>
                     )}
                   </div>
                 ) : (
-                  /* Clinic image */
+                  /* Clinic placeholder */
                   <div className={`h-56 bg-gradient-to-br ${item.gradient} relative`}>
                     <div className="absolute inset-0 flex items-center justify-center opacity-20" aria-hidden="true">
                       <svg viewBox="0 0 80 80" className="w-24 h-24 fill-white">
@@ -206,14 +253,12 @@ export default function GalleryPage() {
                         <circle cx="40" cy="33" r="12" fill="none" stroke="white" strokeWidth="3" />
                       </svg>
                     </div>
-                    <div
-                      className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full"
-                      aria-hidden="true"
-                    >
+                    <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full" aria-hidden="true">
                       Clinic
                     </div>
                   </div>
                 )}
+
                 {/* Card info */}
                 <div className="p-5 bg-white">
                   <h3 className="font-bold text-gray-900 text-sm mb-1">{item.title}</h3>
@@ -230,6 +275,13 @@ export default function GalleryPage() {
           )}
         </div>
       </section>
+
+      {/* Disclaimer */}
+      <div className="bg-gray-50 border-t border-gray-200 py-4">
+        <p className="text-center text-gray-400 text-xs max-w-2xl mx-auto px-4">
+          Images shown are representative examples. Actual patient results may vary. All treatments are performed by qualified dental professionals.
+        </p>
+      </div>
 
       {/* CTA */}
       <section className="py-16 bg-blue-50" aria-labelledby="gallery-cta-heading">

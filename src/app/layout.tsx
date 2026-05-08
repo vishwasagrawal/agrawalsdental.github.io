@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     template: "%s | Dr Agrawal's Dental Clinic & Implant Centre",
   },
   description:
-    "Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat — expert dental care by Dr Rimisha Tibdewal & Dr Gaurav Tibdewal. Implants, root canals, cosmetic dentistry, paediatrics & more.",
+    "Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat — expert dental care by Dr Rimisha G. Tibdewal & Dr Gaurav S. Tibdewal. Implants, root canals, cosmetic dentistry, paediatrics & more.",
   keywords: [
     'dentist Hinganghat',
     'dental clinic Hinganghat',
     'dental implants Hinganghat',
-    'Dr Rimisha Tibdewal',
-    'Dr Gaurav Tibdewal',
+    'Dr Rimisha G. Tibdewal',
+    'Dr Gaurav S. Tibdewal',
     'root canal',
     'teeth whitening',
     'paediatric dentist',

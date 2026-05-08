@@ -5,28 +5,28 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    "Meet Dr Rimisha Tibdewal & Dr Gaurav Tibdewal at Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat. Learn about our team and our commitment to exceptional dental care.",
+    "Meet Dr Rimisha G. Tibdewal & Dr Gaurav S. Tibdewal at Dr Agrawal's Dental Clinic & Implant Centre, Hinganghat. Learn about our team and our commitment to exceptional dental care.",
 }
 
 const doctors = [
   {
     initials: 'RT',
-    name: 'Dr. Rimisha Tibdewal',
+    name: 'Dr. Rimisha G. Tibdewal',
     degree: 'BDS',
     tagline: 'Cosmetic & Paediatric Dentistry',
-    bio: `Dr. Rimisha Tibdewal specialises in cosmetic dentistry, paediatric care, and preventive treatments. She has a natural ability to connect with patients of all ages — particularly children — turning dental visits into positive, confidence-building experiences.`,
+    bio: `Dr. Rimisha G. Tibdewal specialises in cosmetic dentistry, paediatric care, and preventive treatments. She has a natural ability to connect with patients of all ages — particularly children — turning dental visits into positive, confidence-building experiences.`,
     bio2: `Her artistic eye and attention to detail make her the go-to doctor for smile makeovers, veneers, and teeth whitening. She is passionate about helping every patient love their smile.`,
     specs: ['Cosmetic Dentistry', 'Paediatrics', 'Veneers & Crowns', 'Teeth Whitening', 'Bonding & Reshaping'],
     gradient: 'from-teal-400 to-teal-600',
   },
   {
     initials: 'GT',
-    name: 'Dr. Gaurav Tibdewal',
+    name: 'Dr. Gaurav S. Tibdewal',
     degree: 'BDS, MDS',
-    tagline: 'Implantology & Oral Surgery',
-    bio: `Dr. Gaurav Tibdewal is a highly skilled dental surgeon with comprehensive expertise in implantology, oral and maxillofacial surgery, and complex restorative treatments. His precise, methodical approach and calm demeanour put patients at ease — even during advanced procedures.`,
+    tagline: 'Implantology, Root Canal & Oral Surgery',
+    bio: `Dr. Gaurav S. Tibdewal is a highly skilled dental surgeon with comprehensive expertise in implantology, root canal treatments, oral and maxillofacial surgery, and complex restorative treatments. His precise, methodical approach and calm demeanour put patients at ease — even during advanced procedures.`,
     bio2: `He is committed to staying current with the latest advances in implant dentistry and surgical techniques, regularly attending professional development programmes to bring the best outcomes to every patient.`,
-    specs: ['Dental Implants', 'Oral Surgery', 'Extractions', 'Bone Grafting', 'Full Mouth Rehabilitation'],
+    specs: ['Dental Implants', 'Root Canal Treatment', 'Oral Surgery', 'Extractions', 'Bone Grafting', 'Full Mouth Rehabilitation'],
     gradient: 'from-blue-400 to-blue-600',
   },
 ]
@@ -205,7 +205,7 @@ export default function AboutPage() {
               sterilisation protocols to ensure the highest standards of safety and precision.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Today, Dr Rimisha Tibdewal and Dr Gaurav Tibdewal together offer the full spectrum of dental
+              Today, Dr Rimisha G. Tibdewal and Dr Gaurav S. Tibdewal together offer the full spectrum of dental
               services — from routine check-ups and children&apos;s dentistry to complex implant surgeries and smile
               transformations. Our patients are our community, and we are proud to serve them.
             </p>
